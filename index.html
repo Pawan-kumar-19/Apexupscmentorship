@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ApexUPSCxmentorship – UPSC Coaching</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-dark: #0d1b2a;
+      --navy-mid: #1a2e45;
+      --navy-light: #1e3a5f;
+      --navy-pale: #f0f4f8;
+      --navy-pale2: #dce6f0;
+      --gold: #c8973a;
+      --gold-light: #e8b84b;
+      --text-dark: #0d1b2a;
+      --text-mid: #2c4a6e;
+      --text-muted: #6b8aaa;
+      --white: #fff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy-pale);
+      color: var(--text-dark);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--navy-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 5%;
+      min-height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .nav-links a {
+      color: #b8cfe0;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 60%, #1e3a5f 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(200,151,58,0.12) 0%, transparent 60%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(200,151,58,0.2);
+      border: 1px solid rgba(200,151,58,0.5);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 1.05rem;
+      color: #b8cfe0;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 13px 32px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: #b8cfe0;
+      padding: 13px 32px;
+      border: 1.5px solid rgba(184,207,224,0.4);
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--white);
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 28px 5%;
+      border-bottom: 1px solid var(--navy-pale2);
+      box-shadow: 0 2px 12px rgba(13,27,42,0.06);
+    }
+    .stat { text-align: center; padding: 8px 20px; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy-mid);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; letter-spacing: 0.5px; }
+
+    /* SECTION */
+    .section { padding: 72px 5%; }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    /* COURSES */
+    .courses-section { background: var(--navy-pale); }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .course-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--navy-pale2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .course-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,27,42,0.12); }
+    .card-top {
+      background: var(--navy-mid);
+      padding: 22px 24px;
+    }
+    .card-badge {
+      display: inline-block;
+      background: rgba(200,151,58,0.25);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .card-subtitle { font-size: 0.82rem; color: #b8cfe0; font-weight: 300; }
+    .card-body { padding: 20px 24px; }
+    .card-features { list-style: none; margin-bottom: 20px; }
+    .card-features li {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      padding: 5px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .card-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 14px;
+    }
+    .card-price span { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
+    .btn-card {
+      display: block;
+      text-align: center;
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: 11px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .btn-card:hover { background: var(--navy-mid); }
+
+    /* WHY US */
+    .why-section { background: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .why-card { text-align: center; padding: 16px; }
+    .why-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--navy-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.4rem;
+    }
+    .why-title { font-weight: 500; font-size: 1rem; color: var(--navy-dark); margin-bottom: 6px; }
+    .why-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--navy-pale); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 24px;
+      border: 1px solid var(--navy-pale2);
+    }
+    .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testi-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .testi-author { font-weight: 500; font-size: 0.88rem; color: var(--navy-dark); }
+    .testi-batch { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* CTA */
+    .cta-section {
+      background: var(--navy-dark);
+      text-align: center;
+      padding: 72px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(200,151,58,0.1) 0%, transparent 70%);
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .cta-section h2 span { color: var(--gold); }
+    .cta-section p { color: #b8cfe0; font-size: 1rem; margin-bottom: 2rem; font-weight: 300; position: relative; }
+
+    /* FOOTER */
+    footer {
+      background: #07111c;
+      color: #6b8aaa;
+      padding: 48px 5% 24px;
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* Early bird discount boxes */
+    .early-bird {
+      background: rgba(200,151,58,0.08);
+      border: 1px dashed var(--gold);
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-bottom: 14px;
+      font-size: 0.82rem;
+      color: var(--navy-mid);
+    }
+
+    @media (max-width: 768px) {
+      footer .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 70px 5% 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="apex_jpg.jpeg" alt="Apex UPSC Mentorship" style="height: 52px; object-fit: contain;" />
+    <span style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 0.75rem; letter-spacing: 1.5px; margin-top: 2px;">Apex UPSC Mentorship</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="#courses">Courses</a>
+    <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">UPSC Mentorship Program</div>
+  <h1>Your Journey to <span>IAS Starts Here</span></h1>
+  <p>Expert-led coaching, structured study plans, and personalised mentorship to help you crack UPSC with confidence.</p>
+
+</section>
+
+
+<!-- WHY US -->
+<section class="section why-section">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <div class="section-label">Why Apexmentorship</div>
+    <h2 class="section-title">What Sets Us Apart</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <div class="why-title">Focused Mentorship</div>
+      <div class="why-desc">Personalised attention and guidance tailored to each student's strengths and weaknesses.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📚</div>
+      <div class="why-title">Structured Curriculum</div>
+      <div class="why-desc">Well-organised study plans that cover the entire UPSC syllabus systematically.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📝</div>
+      <div class="why-title">Regular Assessments</div>
+      <div class="why-desc">Frequent tests and answer evaluations to track progress and improve performance.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">Proven Track Record</div>
+      <div class="why-desc">Consistent selections year after year with a high prelims success rate.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="section courses-section" id="courses">
+  <div class="section-label">Our Programs</div>
+  <h2 class="section-title">Choose Your Path to Success</h2>
+  <p class="section-sub">Comprehensive UPSC coaching designed for every stage of your preparation journey.</p>
+
+  <div class="courses-grid">
+
+    <!-- Foundation -->
+    <div class="course-card">
+      <div class="card-top">
+        <div class="card-badge">Foundation</div>
+        <div class="card-title">UPSC Prelims Batch</div>
+        <div class="card-subtitle">Complete GS Preparation</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-features">
+          <li>Complete NCERT & Standard Books coverage</li>
+          <li>Weekly Current Affairs sessions</li>
+          <li>Weekly Mock Tests with analysis</li>
+          <li>Personalized One on One Mentorship</li>
+          <li>Doubt-clearing sessions</li>
+          <li>Study material included</li>
+        </ul>
+        <div class="card-price">₹18,000 <span>/ 6 months</span></div>
+        <div class="early-bird">
+          🎉 First 20 students: <strong style="color: var(--navy-dark);">₹15,000</strong>
+        </div>
+        <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-card">Enroll Now</a>
+      </div>
+    </div>
+
+    <!-- Advanced -->
+    <div class="course-card">
+      <div class="card-top" style="background: var(--navy-dark);">
+        <div class="card-badge">Advanced</div>
+        <div class="card-title">Mains Answer Writing</div>
+        <div class="card-subtitle">GS I, II, III, IV + Essay</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-features">
+          <li>Daily answer writing practice</li>
+          <li>Personal evaluation & feedback</li>
+          <li>Previous year paper analysis</li>
+          <li>Essay writing workshops</li>
+          <li>One-on-one review sessions</li>
+          <li>Personalized One on One Mentorship</li>
+        </ul>
+        <div class="card-price">₹20,000 <span>/ 4 months</span></div>
+        <div class="early-bird">
+          🎉 First 20 students: <strong style="color: var(--navy-dark);">₹17,000</strong>
+        </div>
+        <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-card">Enroll Now</a>
+      </div>
+    </div>
+
+    <!-- Complete -->
+    <div class="course-card">
+      <div class="card-top" style="background: #163250;">
+        <div class="card-badge">Complete</div>
+        <div class="card-title">UPSC Foundation Programme 2027</div>
+        <div class="card-subtitle">Prelims + Mains</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-features">
+          <li>Everything in Prelims + Mains batches</li>
+          <li>Complete NCERT & Standard Books coverage</li>
+          <li>Weekly Current Affairs sessions</li>
+          <li>Weekly Mock Tests with analysis</li>
+          <li>Personalized One on One Mentorship</li>
+          <li>Doubt-clearing sessions</li>
+          <li>Study material included</li>
+          <li>Current Affairs</li>
+        </ul>
+        <div class="card-price">₹35,000 <span>/ 12 months</span></div>
+        <div class="early-bird">
+          🎉 Early bird discount: <strong style="color: var(--navy-dark);">₹30,000</strong>
+        </div>
+        <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-card">Enroll Now</a>
+      </div>
+    </div>
+
+    <!-- PSIR -->
+    <div class="course-card">
+      <div class="card-top" style="background: #0f2540;">
+        <div class="card-badge">Optional</div>
+        <div class="card-title">PSIR Mentorship</div>
+        <div class="card-subtitle">Political Science & IR</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-features">
+          <li>Subject-specific expert faculty</li>
+          <li>Comprehensive short notes provided</li>
+          <li>Previous year question discussion & analysis</li>
+          <li>Regular tests & evaluation</li>
+          <li>Personalized One on One Mentorship</li>
+          <li>Strategy sessions included</li>
+        </ul>
+        <div class="card-price">₹18,000 <span>/ 5 months</span></div>
+        <div class="early-bird">
+          🎉 Special discount: <strong style="color: var(--navy-dark);">₹15,000</strong>
+        </div>
+        <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-card">Enroll Now</a>
+      </div>
+    </div>
+
+    <!-- Mains Test Series -->
+    <div class="course-card">
+      <div class="card-top" style="background: #0a1e35;">
+        <div class="card-badge">Test Series</div>
+        <div class="card-title">Mains Test Series</div>
+        <div class="card-subtitle">Comprehensive Mains Practice</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-features">
+          <li>Weekly schedule</li>
+          <li>Daily answer writing</li>
+          <li>One-on-one review session (twice a week)</li>
+          <li>Personal evaluation and feedback</li>
+        </ul>
+        <div class="card-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 1rem;">₹11,999</div>
+        <div class="card-price">₹9,999 <span>after discount</span></div>
+        <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-card">Enroll Now</a>
+      </div>
+    </div>
+
+    <!-- PSIR Test Series -->
+    <div class="course-card">
+      <div class="card-top" style="background: #071525;">
+        <div class="card-badge">Test Series</div>
+        <div class="card-title">PSIR Test Series</div>
+        <div class="card-subtitle">Optional Subject Practice</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-features">
+          <li>Weekly schedule</li>
+          <li>Daily answer writing</li>
+          <li>One-on-one review session (twice a week)</li>
+          <li>Personal evaluation and feedback</li>
+        </ul>
+        <div class="card-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 1rem;">₹11,999</div>
+        <div class="card-price">₹9,999 <span>after discount</span></div>
+        <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-card">Enroll Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact" onclick="window.open('https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform','_blank')">
+  <h2>Ready to <span>Begin Your Journey?</span></h2>
+  <p>Join hundreds of successful aspirants. Limited seats available for the next batch.</p>
+  <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; position: relative;">
+    <a href="tel:+918882713683" class="btn-primary" onclick="event.stopPropagation();">📞 Call Now: +91 88827 13683</a>
+    <a href="mailto:apexupscmentorship@gmail.com" class="btn-primary" onclick="event.stopPropagation();">✉️ Email Us: apexupscmentorship@gmail.com</a>
+    <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" class="btn-primary" onclick="event.stopPropagation();">📋 Fill Enquiry Form</a>
+  </div>
+  <p style="font-size: 0.82rem; color: #6b8aaa; position: relative;">📍 778 Nawada, West Delhi, Delhi - 110059 &nbsp;|&nbsp; Mon–Sat: 9 AM – 7 PM</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left;">
+
+    <div>
+      <img src="apex_jpg.jpeg" alt="Apex UPSC Mentorship" style="height: 48px; object-fit: contain; margin-bottom: 1rem;" />
+      <p style="margin-bottom: 0.6rem; display: flex; align-items: center; gap: 8px;">📞 +91 88827 13683</p>
+      <p style="margin-bottom: 0.6rem; display: flex; align-items: center; gap: 8px;">✉️ apexupscmentorship@gmail.com</p>
+      <p style="margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 8px;">📍 778 Nawada, West Delhi, Delhi - 110059</p>
+      <div style="display: flex; gap: 10px; margin-bottom: 1.2rem;">
+        <a href="#" style="width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #b8cfe0; text-decoration: none; font-size: 0.85rem;">f</a>
+        <a href="#" style="width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #b8cfe0; text-decoration: none; font-size: 0.85rem;">𝕏</a>
+        <a href="#" style="width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #b8cfe0; text-decoration: none; font-size: 0.85rem;">in</a>
+        <a href="#" style="width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #b8cfe0; text-decoration: none; font-size: 0.85rem;">▶</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/1lsDyCZ3twnug8Akm6TTLjCTZMjb-obeYNeyLPZQvMh8/viewform" target="_blank" style="display: inline-block; background: var(--gold); color: var(--navy-dark); padding: 10px 22px; border-radius: 4px; font-size: 0.88rem; font-weight: 600; text-decoration: none;">Enroll Now</a>
+    </div>
+
+    <div>
+      <h4 style="color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem;">Our Services</h4>
+      <ul style="list-style: none;">
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem; transition: color 0.2s;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Online Mentorship</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Strategy Consultation</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Answer Evaluation</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Test Series</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Recorded Videos</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem;">One-on-One Sessions</h4>
+      <ul style="list-style: none;">
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Strategy Rectification</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Answer Writing</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Notes Making</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem;">Group Sessions</h4>
+      <ul style="list-style: none;">
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Mentorship Session</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Answer Writing</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Notes Making</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Subject Sessions</a></li>
+        <li style="margin-bottom: 0.6rem;"><a href="#" style="color: #6b8aaa; text-decoration: none; font-size: 0.88rem;" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#6b8aaa'">Test Discussion</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <p style="text-align: center; margin-top: 1.5rem; font-size: 0.82rem;">© 2024 Apex UPSC Mentorship. All rights reserved. &nbsp;|&nbsp; <a href="about.html">About Us</a> &nbsp;|&nbsp; <a href="#courses">Courses</a></p>
+</footer>
+
+</body>
+</html>
